@@ -51,7 +51,7 @@ public class Client {
         //Student student4 = new Student(student2);
 
         marks.add(89);  //shallow copy
-        student3.setName("Swati");  //deep copy
+        student3.setName("Swati");  //deep copy // student 1 name is aastha
         System.out.println("Debug");
     }
 }
