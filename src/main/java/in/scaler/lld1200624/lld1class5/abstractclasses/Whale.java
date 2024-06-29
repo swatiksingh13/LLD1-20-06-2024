@@ -4,5 +4,4 @@ public abstract class Whale extends Mammal{
     void move() {
         System.out.println("Whale moves using fins");
     }
-
 }
