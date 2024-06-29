@@ -2,7 +2,9 @@ package in.scaler.lld1200624.lld1class6.introtothreads;
 
 public class Client {
     public static void main(String[] args) {
+
         System.out.println("Main thread started - name: " + Thread.currentThread().getName());
+
         HelloWorldPrinter helloWorldPrinter = new HelloWorldPrinter();
         Thread thread = new Thread(helloWorldPrinter);
         thread.start();
