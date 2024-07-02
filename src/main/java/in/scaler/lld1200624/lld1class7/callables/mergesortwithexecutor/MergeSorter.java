@@ -15,8 +15,8 @@ public class MergeSorter implements Callable<List<Integer>> {
         if (arrayToSort.size() <= 1) {
             return arrayToSort;
         }
-        int mid = arrayToSort.size() / 2;
 
+        int mid = arrayToSort.size() / 2;
         List<Integer> leftArray = new ArrayList<>();
         for (int i = 0; i < mid; i++) {
             leftArray.add(arrayToSort.get(i));
@@ -27,34 +27,39 @@ public class MergeSorter implements Callable<List<Integer>> {
             rightArray.add(arrayToSort.get(i));
         }
 
-        in.scaler.lld1200624.lld1class7.callables.mergesortwithoutthread.MergeSorter leftMergeSorter = new in.scaler.lld1200624.lld1class7.callables.mergesortwithoutthread.MergeSorter(leftArray);
-        in.scaler.lld1200624.lld1class7.callables.mergesortwithoutthread.MergeSorter rightMergeSorted = new in.scaler.lld1200624.lld1class7.callables.mergesortwithoutthread.MergeSorter(rightArray);
+        MergeSorter leftMergeSorter = new MergeSorter(leftArray);
+        MergeSorter rightMergeSorter = new MergeSorter(rightArray);
 
         List<Integer> leftSortedArray = leftMergeSorter.call();
-        List<Integer> rightSortedArray = rightMergeSorted.call();
+        List<Integer> rightSortedArray = rightMergeSorter.call();
 
         // Merge both sorted halves
+
         List<Integer> sortedArray = new ArrayList<>();
         int i = 0;
         int j = 0;
+
         while (i < leftSortedArray.size() && j < rightSortedArray.size()) {
             if (leftSortedArray.get(i) < rightSortedArray.get(j)) {
                 sortedArray.add(leftSortedArray.get(i));
                 ++i;
             } else {
-                sortedArray.add(rightSortedArray.get(i));
+                sortedArray.add(rightSortedArray.get(j));
                 ++j;
             }
         }
+
         // Add remaining elements
-        if( i < leftSortedArray.size()) {
+        while (i < leftSortedArray.size()) {
             sortedArray.add(leftSortedArray.get(i));
             ++i;
         }
-        if(j < rightSortedArray.size()) {
+
+        while (j < rightSortedArray.size()) {
             sortedArray.add(rightSortedArray.get(j));
             ++j;
         }
+
         return sortedArray;
     }
 }
