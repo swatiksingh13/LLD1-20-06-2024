@@ -16,7 +16,7 @@ public class MergeSorter implements Callable<List<Integer>> {
     }
 
     public List<Integer> call() throws Exception {
-        if (arrayToSort.size() <= 1) {
+        if ( arrayToSort.size() <= 1) {
             return arrayToSort;
         }
 

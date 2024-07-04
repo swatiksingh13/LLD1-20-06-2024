@@ -1,15 +1,23 @@
-package in.scaler.lld1200624.lld1class7.addersubtractor;
+package in.scaler.lld1200624.lld1class8.addersubtractorwithlock;
+
+import java.util.concurrent.locks.Lock;
 
 public class Subtractor implements Runnable{
     private Count count;
+    private Lock lock;
 
-    public Subtractor(Count count) {
-        this.count = count;
-    }
+    public Subtractor(Count count, Lock lock) {
+            this.count = count;
+            this.lock = lock;
+        }
 
-    public void run() {
-        for (int i = 1; i <= 10000; i++) {
-            count.value -= i;
+        public void run() {
+            for (int i = 1; i <= 10000; i++) {
+                lock.lock();
+                System.out.println("Subtractor : i = " + i + " and count =  " + count.value + " " + Thread.currentThread().getName());
+                count.value -= i;
+                lock.unlock();
+            }
+
         }
     }
-}
