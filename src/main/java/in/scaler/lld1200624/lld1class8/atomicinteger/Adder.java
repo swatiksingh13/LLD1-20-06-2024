@@ -10,7 +10,7 @@ public class Adder implements Runnable {
     public void run() {
         for (int i = 1; i <= 10000; i++) {
             System.out.println("Adder : " + i + " " + Thread.currentThread().getName());
-            count.value.addAndGet(i);
+            count.value.addAndGet(i); //addAndGet(delta)
         }
     }
 }
