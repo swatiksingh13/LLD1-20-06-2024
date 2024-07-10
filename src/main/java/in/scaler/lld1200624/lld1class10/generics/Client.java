@@ -23,12 +23,12 @@ public class Client {
         GenericPair.fun(5.0);
         GenericPair.fun(true);
 
+        // not reqd :Explicit type arguments can be inferred 
         GenericPair.<Boolean>fun(false);
         GenericPair.<String>fun("USA");
 
         // Map<String, Integer> map = new HashMap<>();
     }
-
     private static void demoPair() {
         Pair p1 = new Pair();
         p1.first = 140;
@@ -41,7 +41,6 @@ public class Client {
         System.out.println(name);
         System.out.println(x);
     }
-
     private static void demoGenericPair() {
         GenericPair<String, Integer> pair = new GenericPair<>();
         pair.setFirst("India");

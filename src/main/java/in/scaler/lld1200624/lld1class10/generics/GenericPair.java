@@ -4,6 +4,7 @@ public class GenericPair <F,S> {
     private F first;
     private S second;
 
+    //constructor
 //    public GenericPair(F first, S second) {
 //        this.first = first;
 //        this.second = second;
@@ -25,8 +26,9 @@ public class GenericPair <F,S> {
         return this.second;
     }
 
+    // static generic  method
     public static <T> void fun(T data) {
-        System.out.println("Generic Pair Fun");
+        System.out.println("Static Generic Pair Fun");
         System.out.println(data);
     }
 
