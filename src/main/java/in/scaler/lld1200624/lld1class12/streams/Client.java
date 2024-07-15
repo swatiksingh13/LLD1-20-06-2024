@@ -1,6 +1,5 @@
 package in.scaler.lld1200624.lld1class12.streams;
 
-import ch.qos.logback.core.encoder.JsonEscapeUtil;
 import in.scaler.lld1200624.lld1class12.lambdas.Student;
 
 import java.util.Arrays;
@@ -9,8 +8,7 @@ import java.util.stream.Stream;
 
 public class Client {
         public static void main(String[] args) {
-
-            demoCreateStream();
+           demoCreateStream();
             demoStream();
         }
 
@@ -31,30 +29,33 @@ public class Client {
             streamBuilder.add(5);
             streamBuilder.build();
         }
-
         private static void demoStream() {
+            //Odd numbers
             List<Integer> nums = Arrays.asList(2, 3, 1, 5, 4);
             List<Integer> oddNums = nums.stream().filter((x) -> x % 2 == 1).toList();
-            System.out.println(oddNums);
+            System.out.println(oddNums); //[3, 1, 5]
 
             // Map students to marks
             List<Student> students = Arrays.asList(
-                    new Student("Ajay", 70, 2),
-                    new Student("Raghu", 90, 1),
-                    new Student("Anil", 50, 3)
+                    new Student("Swati", 70, 2),
+                    new Student("Aastha", 90, 1),
+                    new Student("Singh", 50, 3)
             );
-            System.out.println(students.stream().map((student) -> student.marks).toList());
+            System.out.println(students.stream().map((student) -> student.marks).toList()); //[70, 90, 50]
 
-            List<String> students2 = Arrays.asList("Anil", "Rakesh", "Ajay", "Raghu");
-            System.out.println(students2.stream().map(String::toUpperCase).toList());
+            // convert into upper case
+            // :: method reference operator , scope of String class method called toUpperCase
+            // map : function functional interface , hover on map and read by ctrl+touchpad
+            List<String> students2 = Arrays.asList("Swati", "Aastha", "Lalita", "Avinash", "Shiv", "Ayush");
+            System.out.println(students2.stream().map(String::toUpperCase).toList()); //SWATI, AASTHA, LALITA, AVINASH, SHIV, AYUSH]
 
-            System.out.println(students2.stream().map((student) -> student.toUpperCase()).toList());
+            System.out.println(students2.stream().map((student) -> student.toUpperCase()).toList()); //SWATI, AASTHA, LALITA, AVINASH, SHIV, AYUSH]
 
-            // FlatMap
+            // FlatMao : flattening a LinkedList
             List<String> words2 = Arrays.asList("Hello", "World", "iPad", "MacBook Pro", "iPhone");
             List<List<String>> words2D = Arrays.asList(students2, words2);
 
-            System.out.println(words2D);
-            System.out.println(words2D.stream().flatMap(List::stream).map(String::toUpperCase).toList());
+            System.out.println(words2D);  //[[Swati, Aastha, Lalita, Avinash, Shiv, Ayush], [Hello, World, iPad, MacBook Pro, iPhone]]
+            System.out.println(words2D.stream().flatMap(List::stream).map(String::toUpperCase).toList()); //[SWATI, AASTHA, LALITA, AVINASH, SHIV, AYUSH, HELLO, WORLD, IPAD, MACBOOK PRO, IPHONE]
         }
 }

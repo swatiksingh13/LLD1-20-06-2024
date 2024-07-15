@@ -10,7 +10,7 @@ public class Student {
         this.marks = marks;
         this.rollNum = rollNum;
     }
-
+//object to string
     public String toString() {
         return "[name=" + name + ", marks=" + marks + ", rollNum=" + rollNum + "]";
     }

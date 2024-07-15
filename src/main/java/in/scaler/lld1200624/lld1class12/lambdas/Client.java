@@ -9,25 +9,24 @@ import java.util.function.Predicate;
 
 public class Client {
     public static void main(String[] args) {
-
-        // demoLambda();
-        // demoRunnableExample();
+        //demoLambda();
+        //demoRunnableExample();
         demoComparator();
     }
 
     private static void demoComparator() {
-
         List<Student> students = Arrays.asList(
-                new Student("Ajay", 70, 2),
-                new Student("Raghu", 90, 1),
-                new Student("Anil", 50, 3)
+                new Student("Aastha", 70, 2),
+                new Student("Swati", 90, 1),
+                new Student("Singh", 60, 3)
         );
-
+//marks on ascending order
         Comparator<Student> marksComparator = (st1, st2) -> st1.marks - st2.marks;
-
         students.sort(marksComparator);
         System.out.println(students);
-        Comparator<Student> rollNumComparator = (st1, st2) -> st1.rollNum - st2.rollNum;
+
+        //roll num on desc order
+        Comparator<Student> rollNumComparator = (st1, st2) -> st2.rollNum - st1.rollNum;
         students.sort(rollNumComparator);
         System.out.println(students);
     }
@@ -57,7 +56,7 @@ public class Client {
             System.out.println(str + " " + n);
         };
 
-        c2.accept("Scaler", 2);
+        c2.accept("Scaler", 20);
 
         Predicate<String> p1 = (str) -> {
             if (str.length() > 5) return true;
@@ -71,7 +70,6 @@ public class Client {
 
         System.out.println(p2.test("Scaler"));
         System.out.println(p2.test("Ajay"));
-
 
         Predicate<String> p3 = (str) ->  str.length() > 5;
 
