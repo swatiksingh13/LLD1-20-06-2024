@@ -36,7 +36,7 @@ private static void demoTryCatch() {
         int b = scanner.nextInt();
 
         System.out.println(a/b);
-        System.exit(-1);  //kill the application , finally  will not execute
+         System.exit(-1);  //kill the application , finally  will not execute
         return;   //still finally will execute
     }
 // if try logic is good then not catch run as not exception if there is exception catch print as we catch the exception
